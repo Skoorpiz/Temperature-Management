@@ -10,13 +10,17 @@ function moy($mysqli, $ville)
         $req = "SELECT SUM(valeur) / $countAnnee[0]  FROM temperature WHERE id_mois = $i AND id_ville = $ville;";
         $res = $mysqli->query($req);
         $a_temp[$i] = $res->fetch_row();
+        $a_temp[$i][0] = number_format(($a_temp[$i][0]), 0, '.', '');
+        //    echo number_format((float)$a_temp[$i][0]);
+
     }
+
     return $a_temp;
 }
 function moyMulti($mysqli, $a_ville)
 {
     for ($n = 0; $n < count($a_ville); $n++) {
-        
+
         $req = "SELECT COUNT(DISTINCT id_annee) FROM temperature WHERE id_ville = $a_ville[$n];";
         // echo "<pre>";
         // echo $req;
@@ -29,9 +33,10 @@ function moyMulti($mysqli, $a_ville)
             // echo $req;
             $res = $mysqli->query($req);
             $a_temp[$n][$i] = $res->fetch_row();
+            $a_temp[$n][$i][0] = number_format(($a_temp[$n][$i][0]), 0, '.', '');
         }
     }
-   
+
     return $a_temp;
 }
 function maxim($mysqli, $ville)
