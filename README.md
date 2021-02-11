@@ -12,7 +12,7 @@ You can manage this with admin account, default account is : <br>
 login : admin <br>
 password : 123 <br>
 To manage temperatures, towns or accounts, you need to acces to the backOffice (127.0.0.0/maj.php). <br>
-Temperature Management can show you with the charts the average, maximum and minimum of temperatures
+Temperature Management can show you with charts the average, maximum and minimum of temperatures
 
 ## Author
 
