@@ -1,6 +1,5 @@
 <h1 align="center">Welcome to the Temperature Management 👋</h1>
 
-[![Generic badge](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/amcharts-4.0.0-blue.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/bootstrap-4.0.0-blue.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/licence-MIT-orange.svg)](https://shields.io/)
