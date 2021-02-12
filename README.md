@@ -30,5 +30,5 @@ Please ⭐️ this repository if this project helped you!
 
 ## 📝 License
 
-Copyright © 2019 [Skoorpiz](https://github.com/Skoorpiz).<br />
+Copyright © 2021 [Skoorpiz](https://github.com/Skoorpiz).<br />
 This project is [MIT](https://github.com/Skoorpiz/Temperature-Management/blob/master/MIT-LICENSE.txt) licensed.
