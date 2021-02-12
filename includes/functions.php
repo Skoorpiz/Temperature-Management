@@ -11,10 +11,7 @@ function moy($mysqli, $ville)
         $res = $mysqli->query($req);
         $a_temp[$i] = $res->fetch_row();
         $a_temp[$i][0] = number_format(($a_temp[$i][0]), 0, '.', '');
-        //    echo number_format((float)$a_temp[$i][0]);
-
     }
-
     return $a_temp;
 }
 function moyMulti($mysqli, $a_ville)
@@ -36,7 +33,6 @@ function moyMulti($mysqli, $a_ville)
             $a_temp[$n][$i][0] = number_format(($a_temp[$n][$i][0]), 0, '.', '');
         }
     }
-
     return $a_temp;
 }
 function maxim($mysqli, $ville)
@@ -67,7 +63,6 @@ function mois($mysqli)
     }
     return $a_mois;
 }
-
 function ecrire_log($debugg)
 {
     $date = date("Y-m-d H:i:s");

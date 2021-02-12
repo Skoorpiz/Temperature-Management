@@ -11,12 +11,21 @@
     // Create chart instance
     var chart = am4core.create("chartdiv3", am4charts.XYChart);
 
-    var value;
-    var open;
-    var close;
+
+    <?php if ($id == 1) {
+    ?>
+      var value;
+      var open;
+      var close;
+      <?php } else if ($id == 2) {
+      for ($n = 0; $n < count($a_ville); $n++) { ?>
+        var value<?php echo $n ?>;
+
+    <?php }
+    } ?>
     var date;
     var data = [];
-    
+
     <?php
     $compteur = 0;
 
@@ -46,17 +55,22 @@
 
           <?php
         } else if ($id == 2) {
-          for ($n = 0; $n < count($a_ville); $n++) { ?>
+          ?>
 
 
             data.push({
 
               date: date,
+              <?php  
+              for ($n = 0; $n < count($a_ville); $n++) {  
+                ?>
               value<?php echo $n ?>: value<?php echo $n ?>,
 
-            });
+
+            
       <?php
-          }
+          }?> });
+          <?php
         }
         $compteur++;
       }
@@ -70,6 +84,8 @@
 
       var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 
+
+
       <?php
       if ($id == 1) {
       ?>
@@ -78,11 +94,12 @@
         series1.dataFields.dateX = "date";
         series1.yAxis = valueAxis;
         series1.name = "Moyenne";
-        series1.tooltipText = "Moyenne: {value}";
+        series1.tooltipText = "{name} : {value}";
+
         var series2 = chart.series.push(new am4charts.ColumnSeries());
         series2.dataFields.openValueY = "open";
         series2.dataFields.valueY = "close";
-        series2.tooltipText = "open: {openValueY.value} close: {valueY.value}";
+        series2.tooltipText = "Max: {openValueY.value} Min: {valueY.value}";
         series2.dataFields.dateX = "date";
         series2.yAxis = valueAxis;
         series2.name = "Maximum et Minimum";
@@ -109,9 +126,12 @@
           series<?php echo $n ?>.yAxis = valueAxis;
           series<?php echo $n ?>.name = "<?php echo $nomVille[$n][0] ?>";
           series<?php echo $n ?>.stroke = am4core.color("<?php echo $color[$n] ?>");
-          series<?php echo $n ?>.tooltipText = "<?php echo $nomVille[$n][0] ?> : {value<?php echo $n ?>}";
-        <?php } } ?>
+          series<?php echo $n ?>.tooltipText = "{name} : {valueY}";
+      <?php }
+      } ?>
 
+
+      console.log(chart.data);
       chart.legend = new am4charts.Legend();
       chart.legend.position = "top";
 
