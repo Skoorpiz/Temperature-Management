@@ -38,32 +38,35 @@ and open the template in the editor.
                 <select class="form-control" name="ville">
                     <?php
                     for ($i = 0; $i < $countVille[0]; $i++) {
+                        $idVille[$i] = $ville[$i][0];
+                        $req = "SELECT count(*) FROM temperature WHERE temperature.id_ville = $idVille[$i];";
+                        $res = $mysqli->query($req);
+                        $countTempVille = $res->fetch_row();
                     ?>
                         <option value="<?php echo $ville[$i][0] ?>">
-                            <?php echo $ville[$i][1] ?>
+                            <?php echo $ville[$i][1] . " (" . $countTempVille[0] . ")" ?>
                         </option>
                     <?php } ?>
                 </select>
             </form>
-            </div>
         </div>
         </div>
-            <!-- <h2>Insertion de données</h2> -->
-        <?php
+        </div>
+        <!-- <h2>Insertion de données</h2> -->
+    <?php
     } else if (!isset($_SESSION['role'])) {
         $debugg = " [WARNING] Accès refusé à la gestion des données, connexion manquante";
         ecrire_log($debugg);
     } else if ($_SESSION['role'] != 1) {
         $debugg = " [WARNING] Accès refusé à la gestion des données, l'utilisateur n'a pas l'autorisation";
         ecrire_log($debugg);
-
     }
     // $download = 'script/fichiers';
     // if ($handle = opendir($download)) {
     // while (false !== ($entry = readdir($handle))) {
     //     if ($entry != "." && $entry != "..") {
-        ?>
-        <!-- <form method="POST" action="script/traitementDonnees.php">
+    ?>
+    <!-- <form method="POST" action="script/traitementDonnees.php">
                     <input type="hidden" name="nomFichier" value="<?php
                                                                     // echo "$entry"; 
                                                                     ?>"
@@ -88,13 +91,13 @@ and open the template in the editor.
                         </select>
                         <button type="submit">Sélectionner</button><br><br>
                     </form> -->
-        <?php
-        //         }
-        //     }
-        //     closedir($handle);
-        // }
-        ?>
-        
+    <?php
+    //         }
+    //     }
+    //     closedir($handle);
+    // }
+    ?>
+
 </body>
 
 </html>
